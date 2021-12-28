@@ -14,7 +14,57 @@ function computerPlay(){
     }
 }
 
-/*Déclaration de la fonction pour jouer un round*/
+let finalPlayerScore = 0
+let finalComputerScore = 0
+
+const buttons = document.querySelectorAll('button');
+buttons.forEach((button) => {
+    button.addEventListener('click', () => {
+        let playerSelection = button.id
+        const computerSelection = computerPlay()
+        let tab = playRound(playerSelection, computerSelection)
+
+        if(tab[1]>tab[0]){
+            finalPlayerScore = finalPlayerScore + 1
+        } else if(tab[1]<tab[0]){
+            finalComputerScore = finalComputerScore +1
+        }
+
+        const container = document.querySelector("#container")
+
+        let resultPlayer = document.createElement('p')
+        resultPlayer.textContent = "Votre score : " + finalPlayerScore
+        container.appendChild(resultPlayer)
+        
+        let resultComputer = document.createElement('p')
+        resultComputer.textContent = "Score ordinateur : " + finalComputerScore
+        container.appendChild(resultComputer)
+
+        if(finalPlayerScore === 5){
+            playerWin()
+        } else if(finalComputerScore === 5){
+            computerWin()
+        }
+
+    })
+})
+function playerWin(){
+    let winner = document.createElement('p');
+    winner.textContent = " FELICITATIONS, VOUS AVEZ GAGNE !"
+    winner.style.fontWeight = 'bold'
+    container.appendChild(winner)
+    finalComputerScore = 0
+    finalPlayerScore = 0
+}
+function computerWin(){
+    let winner = document.createElement('p')
+    winner.textContent = "Désolé, vous avez perdu, l'ordinateur a gagné... Retenter votre chance !"
+    winner.style.fontWeight = 'bold'
+    container.appendChild(winner)
+    finalPlayerScore = 0
+    finalComputerScore = 0
+}
+
 
 function playRound(playerSelection, computerSelection){
     let computerScore = 0; /*On déclare des variables pour calculer le score d'une manche*/
@@ -24,85 +74,62 @@ function playRound(playerSelection, computerSelection){
     if(playerSelection === "paper"){
         if(computerSelection === "paper"){
             let tab = [computerScore, playerScore,"Paper vs paper, play again" ]
-            return tab  /*On retourne un array comprenant le score de chaque manche, on pourra ainsi réutiliser les valeurs plus tards*/
+            document.querySelector('div').textContent = tab[2]  /*On retourne un array comprenant le score de chaque manche, on pourra ainsi réutiliser les valeurs plus tards*/
+            return tab
         }
         else if(computerSelection === "rock"){
             playerScore = playerScore + 1;
             let tab = [computerScore, playerScore,"You win, paper beats rock" ]
+            document.querySelector('div').textContent = tab[2]
             return tab
         }
         else{
             computerScore = computerScore + 1;
             let tab = [computerScore, playerScore,"You lose, scissors beat paper" ]
+            document.querySelector('div').textContent = tab[2]
             return tab
         }
     }
     if(playerSelection === "rock"){
         if(computerSelection === "rock"){
             let tab = [computerScore, playerScore,"Rock vs rock, play again" ]
+            document.querySelector('div').textContent = tab[2]
             return tab
         }
         else if(computerSelection === "scissors"){
             playerScore = playerScore + 1;
             let tab = [computerScore, playerScore,"You win, rock beats scissors"]
+            document.querySelector('div').textContent = tab[2]
             return tab
-            return 
+            
         }
         else {
             computerScore = computerScore + 1;
             let tab = [computerScore, playerScore,"You lose, paper beats rock"]
+            document.querySelector('div').textContent = tab[2]
             return tab
         }
     }
     if(playerSelection === "scissors"){
         if(computerSelection === "scissors"){
             let tab = [computerScore, playerScore,"Scissors vs scissors, play again"]
+            document.querySelector('div').textContent = tab[2]
             return tab
         }
         else if(computerSelection === "paper"){
             playerScore = playerScore + 1;
             let tab = [computerScore, playerScore,"You win, scissors beat paper" ]
+            document.querySelector('div').textContent = tab[2]
             return tab
         }
         else{
             computerScore = computerScore + 1;
             let tab = [computerScore, playerScore,"You lose, rock beats scissors" ]
+            document.querySelector('div').textContent = tab[2]
             return tab
         }
-    }    
-}
-
-/*Déclaration d'une fonction game() où 5 manches seront jouées*/
-
-function game(){
-    let finalPlayerScore = 0; /*On déclare 2 variables pour les scores finaux*/
-    let finalComputerScore = 0;
-  for(i = 0; i < 5; i++){    /*Boucle pour effectuer 5 manches*/
-    let playerSelection = prompt("Rock, paper or scissors?") /*On utilise prompt() pour demander à l'utilisateur d'entrée une valeur*/
-    const computerSelection = computerPlay() /*On appelle l'ordinateur à jouer*/
-
-    let tab = playRound(playerSelection, computerSelection) /*On appelle un round et on stocke les valeurs du tableau dans la variable*/
-    
-    console.log(tab[2]) /*On utilise le tableau pour afficer ses valeurs*/
-
-    if(tab[1] > tab[0]){
-        finalPlayerScore = finalPlayerScore + 1;  //On incrémente le score final selon le résultat d'une manche
-    } else if(tab[1] < tab[0]){
-            finalComputerScore = finalComputerScore + 1;
     }
-    
-   }
-
-   if(finalPlayerScore > finalComputerScore){ //On affiche le score final.
-        console.log("Vous avez gagné la partie avec " + finalPlayerScore + " points " + "et " + finalComputerScore + " points pour l'ordinateur.")
-    }
-    if(finalPlayerScore < finalComputerScore){
-        console.log("Vous avez perdu la partie avec " + finalPlayerScore + " points contre " + finalComputerScore + " points pour l'ordinateur.")
-    }
-    if(finalComputerScore == finalPlayerScore){
-        console.log("Egalité avec " + finalPlayerScore + " points, contre " + finalComputerScore +" points. Veuillez rejouer")
-    }
+        
 }
 
 
-game(); //On appelle la fonction pour jouer 5 manches.
