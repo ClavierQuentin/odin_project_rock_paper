@@ -1,0 +1,17 @@
+#scissorsImage{
+ 
+    
+}
+#rockImage{
+ 
+#paperImage{
+    
+    width: 225px;
+    height: 225px;
+}
+#images{
+    border: black solid 1px;
+    width: 225px;
+    height: 225px;
+   
+}

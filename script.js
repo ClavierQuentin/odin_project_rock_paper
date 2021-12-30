@@ -21,6 +21,7 @@ const buttons = document.querySelectorAll('button');
 buttons.forEach((button) => {
     button.addEventListener('click', () => {
         let playerSelection = button.id
+    
         const computerSelection = computerPlay()
         let tab = playRound(playerSelection, computerSelection)
 
@@ -29,8 +30,8 @@ buttons.forEach((button) => {
         } else if(tab[1]<tab[0]){
             finalComputerScore = finalComputerScore +1
         }
-
-        const container = document.querySelector("#container")
+        
+        const container = document.getElementById("container")
 
         let resultPlayer = document.createElement('p')
         resultPlayer.textContent = "Votre score : " + finalPlayerScore
@@ -72,6 +73,13 @@ function playRound(playerSelection, computerSelection){
     playerSelection = playerSelection.toLowerCase();  /*On rends l'entrée de l'utilisateur insensible à la casse */
 
     if(playerSelection === "paper"){
+        
+        let img =document.getElementById('paperImage')
+        img.style.visibility = "visible"
+        let img2 = document.getElementById("rockImage")
+        img2.style.visibility = "hidden"
+        let img3 = document.getElementById("scissorsImage")
+        img3.style.visibility = "hidden"
         if(computerSelection === "paper"){
             let tab = [computerScore, playerScore,"Paper vs paper, play again" ]
             document.querySelector('div').textContent = tab[2]  /*On retourne un array comprenant le score de chaque manche, on pourra ainsi réutiliser les valeurs plus tards*/
@@ -91,6 +99,12 @@ function playRound(playerSelection, computerSelection){
         }
     }
     if(playerSelection === "rock"){
+        let img = document.getElementById('rockImage')
+        img.style.visibility = "visible"
+        let img2 = document.getElementById("paperImage")
+        img2.style.visibility = "hidden"
+        let img3 = document.getElementById("scissorsImage")
+        img3.style.visibility = "hidden"
         if(computerSelection === "rock"){
             let tab = [computerScore, playerScore,"Rock vs rock, play again" ]
             document.querySelector('div').textContent = tab[2]
@@ -111,6 +125,13 @@ function playRound(playerSelection, computerSelection){
         }
     }
     if(playerSelection === "scissors"){
+        let img = document.getElementById('scissorsImage')
+        img.style.visibility = "visible"
+        let img2 = document.getElementById("rockImage")
+        img2.style.visibility = "hidden"
+        let img3 = document.getElementById("paperImage")
+        img3.style.visibility = "hidden"
+        
         if(computerSelection === "scissors"){
             let tab = [computerScore, playerScore,"Scissors vs scissors, play again"]
             document.querySelector('div').textContent = tab[2]
