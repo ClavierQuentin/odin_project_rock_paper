@@ -7,12 +7,16 @@
     height: 225px;
     width: 225px;
     visibility: hidden;
+    position: absolute;
+    left: 42%;
 }
 #computerRockImage{
     visibility: hidden;
+    position: absolute;
+    left: 42%;
 }
 #computerScissorsImage{
-    visibility: hidden;
+    visibility: hidden; 
 }
 main{
     display: flex;
@@ -22,9 +26,10 @@ main{
     margin: auto;
     background-color: white;
     padding-top: 20px;
+    
 }
 header, footer{
-    display:flex;
+    display: flex;
     justify-content: center;
     background-color: rgb(245, 236, 236);
 }
@@ -40,4 +45,7 @@ header, footer{
 }
 body{
     margin: 0;
+}
+footer{
+    font-size: 12px;
 }
