@@ -9,18 +9,31 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  
-        <button id="paper" class="button">Paper</button>
-        <button id="rock" class="button">Rock</button>
-        <button id="scissors" class="button">Scissors</button>
- 
-<div id="container"></div>
-    <div id="images">
-            <img src="images/scissors.jpeg" alt="scissors" id="scissorsImage">
-            <img src="images/rock.jpeg" alt="rock" id="rockImage">
-            <img src="images/paper.png" alt="paper" id="paperImage">
-    </div>
-    
+    <header>
+        <h1>Let's play to Rock Paper Scissors !</h1>
+    </header>
+    <main>
+        <section id="buttons">
+            <button id="paper" class="button"><img src="images/paper.png" alt="paper" id="paperImage"></button>
+            <button id="rock" class="button"> <img src="images/rock.jpeg" alt="rock" id="rockImage"></button>
+            <button id="scissors" class="button"><img src="images/scissors.jpeg" alt="scissors" id="scissorsImage"></button>
+        </section>
+        <section id='versus'>
+            <img src="images/versus.png" alt="versus" id="versus">
+        </section>
+        <section id="computerSelection">
+            <img src="images/paper.png" alt="paper" id="computerPaperImage">
+            <img src="images/rock.jpeg" alt="rock" id="computerRockImage">
+            <img src="images/scissors.jpeg" alt="scissors" id="computerScissorsImage">
+        </section>
+        <section id="scores">
+            <div id="score"><h4>Scores</h3></div>
+            <div id='player'><span id='playerName'>Joueur</span> : <span id="scorePlayer"></span> <br>Ordinateur : <span id="scoreComputer"></span></div>
+        </section>
+    </main>
+    <footer>
+        <p>Copyright Quentin Clavier 2021</p>
+    </footer>
 </body>
 </html>
 

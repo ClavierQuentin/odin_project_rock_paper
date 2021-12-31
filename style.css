@@ -1,17 +1,43 @@
-#scissorsImage{
- 
-    
-}
-#rockImage{
- 
 #paperImage{
-    
     width: 225px;
     height: 225px;
+    background-color: white;
 }
-#images{
-    border: black solid 1px;
-    width: 225px;
+#computerPaperImage{
     height: 225px;
-   
+    width: 225px;
+    visibility: hidden;
+}
+#computerRockImage{
+    visibility: hidden;
+}
+#computerScissorsImage{
+    visibility: hidden;
+}
+main{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 70%;
+    margin: auto;
+    background-color: white;
+    padding-top: 20px;
+}
+header, footer{
+    display:flex;
+    justify-content: center;
+    background-color: rgb(245, 236, 236);
+}
+#versus{
+    height: 160px;
+}
+#score{
+    font-size: 1.5em;
+    margin-bottom: 15px;
+}
+#player{
+    font-size: 2em;
+}
+body{
+    margin: 0;
 }
