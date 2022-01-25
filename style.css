@@ -49,3 +49,7 @@ body{
 footer{
     font-size: 12px;
 }
+button{
+    background-color: white;
+    border-color: white;
+}
